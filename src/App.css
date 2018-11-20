@@ -1,0 +1,45 @@
+:root {
+  --black: #000;
+  --white: #fefefe;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.calc {
+  margin: 75px 0px;
+  min-width: 300px;
+  min-height: 400px;
+}
+
+.calc__row {
+  display: flex;
+  font-size: 24px;
+  flex-wrap: nowrap;
+  height: 75px;
+  width: 100%;
+}
+
+.calc__row.display {
+  background-color: var(--black);
+  color: var(--white);
+  display: flex;
+  font-size: 48px;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.calc__row.display .total {
+  padding: 13px;
+}
+
+.calc__row.buttons .button {
+  border: 1px solid var(--black);
+  flex-basis: 50%;
+  line-height: 60px;
+  padding: 10px;
+  text-align: center;
+}
