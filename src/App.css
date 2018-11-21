@@ -1,5 +1,6 @@
 :root {
   --black: #000;
+  --orange: #ff8300;
   --white: #fefefe;
 }
 
@@ -10,9 +11,10 @@
 }
 
 .calc {
+  border: 1px solid var(--black);
   margin: 75px 0px;
   min-width: 300px;
-  min-height: 400px;
+  min-height: 375px;
 }
 
 .calc__row {
@@ -34,6 +36,14 @@
 
 .calc__row.display .total {
   padding: 13px;
+}
+
+.button {
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--orange);
 }
 
 .calc__row.buttons .button {
