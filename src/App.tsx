@@ -5,7 +5,7 @@ import './App.css';
 class App extends React.Component {
 
   numberKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
-  operatorKeys = ['+', '=', '*', '/', '-'];
+  operatorKeys = ['+', '*', '/', '-', '=', 'Enter'];
   operate = {
     '*': (x: number, y: number) => Math.abs(x * y),
     '/': (x: number, y: number) => Math.abs(x / y),
@@ -84,7 +84,7 @@ class App extends React.Component {
   operatorButtonPress(buttonValue: string) {
     const operator = buttonValue;
     const state: AppState = Object.assign({}, this.state);
-    const operatorIsEquals = operator && operator === '=';
+    const operatorIsEquals = operator && operator === '=' || operator === 'Enter';
 
     // Ignore 'equals' unless we already have two values to compare
     if (operatorIsEquals && state.total === 0) return;
@@ -117,7 +117,7 @@ class App extends React.Component {
   handleBackspace() {
     const state = Object.assign({}, this.state);
 
-    state.displayValue = state.displayValue.length < 2 ? '0' : 
+    state.displayValue = state.displayValue.length < 2 ? '0' :
         state.displayValue.substring(0, state.displayValue.length - 1);
     state.lastValue = Number(state.displayValue);
 
