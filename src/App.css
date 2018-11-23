@@ -1,37 +1,46 @@
 :root {
-  --black: #000;
-  --orange: #ff8300;
+  --black: #2B2B2B;
+  --blue: #3F537F;
+  --blue-active: #99B8FF;
+  --slate: #555577;
   --white: #fefefe;
+}
+
+body {
+  background-color: var(--black);
 }
 
 .app {
   display: flex;
   justify-content: center;
   width: 100%;
+  height: 100%;
 }
 
 .calc {
-  border: 1px solid var(--black);
-  margin: 75px 0px;
-  min-width: 300px;
-  min-height: 375px;
+  margin: 25px 0px;
+  width: 100%;
+  height: 100%;
+  max-width: 450px;
 }
 
 .calc__row {
   display: flex;
   font-size: 24px;
   flex-wrap: nowrap;
-  height: 75px;
+  height: 20%;
   width: 100%;
 }
 
 .calc__row.display {
-  background-color: var(--black);
+  background-color: var(--slate);
+  border: 5px solid var(--black);
+  border-radius: 10px;
   color: var(--white);
   display: flex;
   font-size: 48px;
   justify-content: flex-end;
-  width: 100%;
+  width: 97.7%;
 }
 
 .calc__row.display .total {
@@ -39,15 +48,18 @@
 }
 
 .button {
+  background-color: var(--blue);
+  color: var(--white);
   cursor: pointer;
 }
 
 .button:hover {
-  background-color: var(--orange);
+  background-color: var(--blue-active);
 }
 
 .calc__row.buttons .button {
-  border: 1px solid var(--black);
+  border: 5px solid var(--black);
+  border-radius: 10px;
   flex-basis: 50%;
   line-height: 60px;
   padding: 10px;
