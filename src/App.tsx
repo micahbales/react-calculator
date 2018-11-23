@@ -33,6 +33,7 @@ class App extends React.Component {
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleButtonPress = this.handleButtonPress.bind(this);
     this.clearButtonPress = this.clearButtonPress.bind(this);
+    this.handleBackspace = this.handleBackspace.bind(this);
     this.operatorButtonPress = this.operatorButtonPress.bind(this);
     this.updateDisplayValue = this.updateDisplayValue.bind(this);
   }
@@ -47,6 +48,7 @@ class App extends React.Component {
 
   handleKeyDown(e: KeyboardEvent) {
     if (e.key === 'c') return this.clearButtonPress(e);
+    if (e.key === 'Backspace') return this.handleBackspace();
     this.handleInput(e.key);
   }
 
@@ -82,8 +84,10 @@ class App extends React.Component {
   operatorButtonPress(buttonValue: string) {
     const operator = buttonValue;
     const state: AppState = Object.assign({}, this.state);
-    const operatorIsEquals = operator && operator.charCodeAt(0) === 61;
+    const operatorIsEquals = operator && operator === '=';
 
+    // Ignore 'equals' unless we already have two values to compare
+    if (operatorIsEquals && state.total === 0) return;
     state.operatorPressed = true;
 
     if (operatorIsEquals && state.total !== 0) {
@@ -107,6 +111,16 @@ class App extends React.Component {
     state.operator = '';
     state.operatorPressed = false;
     state.total = 0;
+    this.setState(state);
+  }
+
+  handleBackspace() {
+    const state = Object.assign({}, this.state);
+
+    state.displayValue = state.displayValue.length < 2 ? '0' : 
+        state.displayValue.substring(0, state.displayValue.length - 1);
+    state.lastValue = Number(state.displayValue);
+
     this.setState(state);
   }
 
